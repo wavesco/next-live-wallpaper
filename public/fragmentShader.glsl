@@ -75,7 +75,7 @@ void main() {
  // add some noise octaves
     float a = 0.6, f = 1.0;
 
-    for(int i = 0; i < 25; i++) // 4 octaves also look nice, its getting a bit slow though
+    for(int i = 0; i < 5; i++) // 4 octaves also look nice, its getting a bit slow though
     {
         float v1 = voronoi(uv * f + 5.0);
         float v2 = 0.0;
