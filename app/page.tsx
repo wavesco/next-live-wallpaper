@@ -32,7 +32,7 @@ function RotatingCube({ vertex, fragment }: RotatingCubeProps): JSX.Element {
   useFrame((state) => {
     let time = state.clock.getElapsedTime();
     if (materialRef.current) {
-      materialRef.current.uniforms.iTime.value = time + 100;
+      materialRef.current.uniforms.iTime.value = time + 250;
     }
   });
 

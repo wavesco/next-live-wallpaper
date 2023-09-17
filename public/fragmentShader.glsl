@@ -68,8 +68,8 @@ void main() {
  //v = 1.0 - length(uv) * 1.5;
 
  // a bit of camera movement
-    uv *= 0.6 + sin(iTime * 0.1) * 0.4;
-    uv = rotate(uv, sin(iTime * 0.3) * 1.0);
+    uv *= 0.75 + sin(iTime * 0.1) * 0.5;
+    uv = rotate(uv, sin(iTime * 0.3) * .5);
     uv += iTime * 0.15;
 
  // add some noise octaves
@@ -95,7 +95,7 @@ void main() {
         v1 = 1.0 - smoothstep(0.0, 0.3, v1);
 
   // noise is used as intensity map
-        v2 = a * (noise1(v1 * 4.5 + 0.1));
+        v2 = a * (noise1(v1 * 5.5 + 0.1));
 
   // octave 0's intensity changes a bit
         if(i == 0)
@@ -108,16 +108,16 @@ void main() {
     }
 
  // slight vignetting
-    v *= exp(-0.5 * length(suv)) * .5;
+    v *= exp(-0.5 * length(suv)) * .25;
 
  // use texture channel0 for color? why not.
-    vec3 cexp = texture(iChannel0, uv * .501).xyz * 3.0 + texture(iChannel0, uv * 0.01).xyz;//vec3(1.0, 2.0, 4.0);
-    cexp *= 1.4;
+    vec3 cexp = texture(iChannel0, uv * .001).xyz * 3.0 + texture(iChannel0, uv * 0.01).xyz;//vec3(1.0, 2.0, 4.0);
+    cexp *= 1.75;
 
  // old blueish color set
  //vec3 cexp = vec3(6.0, 4.0, 2.0);
 
-    vec3 col = vec3(pow(v, cexp.x), pow(v, cexp.y), pow(v, cexp.z)) * 2.0;
+    vec3 col = vec3(pow(v, cexp.x), pow(v, cexp.y), pow(v, cexp.z)) * 1.75;
 
     gl_FragColor = vec4(col, 1.0);
 }
